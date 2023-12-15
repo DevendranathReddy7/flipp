@@ -4,16 +4,16 @@ import Ratings from "../components/Ratings.js"
 import { useEffect, useState } from "react"
 import axios from "axios"
 const ProductDetailPage = () => {
+    const [selectedProduct, setSelectedProduct] = useState({})
     const { prdid: productId } = useParams()
-    const [selectedProduct, setSelectedProduct] = useState()
 
     useEffect(() => {
-        const fetchdata = async () => {
-            const data = await axios.get(`/api/products/:${productId}`)
+        const fetchProduct = async () => {
+            const { data } = await axios.get(`/api/products/${productId}`)
             setSelectedProduct(data)
         }
-        fetchdata()
-    }, [])
+        fetchProduct()
+    }, [productId])
 
     return (
         <>

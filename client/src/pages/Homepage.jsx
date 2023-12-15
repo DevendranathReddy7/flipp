@@ -12,7 +12,6 @@ const Homepage = () => {
         }
         fetechProducts()
     }, [])
-    console.log(products);
     return (
         <Row>
             {products.map((prd) => (
