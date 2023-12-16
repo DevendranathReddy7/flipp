@@ -1,5 +1,4 @@
 export const product = [{
-    _id: '1',
     name: 'Airpods     image: ../images/airpods.jpg    ',
     image: '../images/airpods.jpg',
     description: 'random ',
@@ -10,7 +9,6 @@ export const product = [{
     rating: 4.5,
     numReviews: 12
 }, {
-    _id: '2',
     name: 'Alexa',
     image: '../images/alexa.jpg',
     description: 'random',
@@ -21,7 +19,6 @@ export const product = [{
     rating: 1,
     numReviews: 120
 }, {
-    _id: '3',
     name: 'Camera',
     image: '../images/camera.jpg',
     description: 'random',
@@ -32,7 +29,6 @@ export const product = [{
     rating: 4.5,
     numReviews: 12
 }, {
-    _id: '4',
     name: 'mouse',
     image: '../images/mouse.jpg',
     description: 'random',
@@ -43,7 +39,6 @@ export const product = [{
     rating: 4.5,
     numReviews: 12
 }, {
-    _id: '5',
     name: 'Phone',
     image: '../images/phone.jpg',
     description: 'random',
@@ -54,7 +49,6 @@ export const product = [{
     rating: 4.5,
     numReviews: 12
 }, {
-    _id: '6',
     name: 'PlayStation',
     image: '../images/playstation.jpg',
     description: 'random',
