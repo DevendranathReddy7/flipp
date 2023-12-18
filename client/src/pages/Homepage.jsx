@@ -1,6 +1,6 @@
 import Products from "../components/Products"
 import { Col, Row } from "react-bootstrap"
-import { useGetProductQuery } from "../slices/productApiSlice"
+import { useGetProductsQuery } from "../slices/productApiSlice"
 import Loader from "../components/Loader"
 import Message from "../components/Message"
 // import axios from 'axios'
@@ -19,7 +19,7 @@ const Homepage = () => {
 
     //OR
 
-    const { data: products, isLoading, error } = useGetProductQuery()
+    const { data: products, isLoading, error } = useGetProductsQuery()
 
     return (
 
