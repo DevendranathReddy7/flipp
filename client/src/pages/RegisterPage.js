@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import FormContainer from "../components/FormContainer"
+import FormContainer from "../components/FormContainer.js"
 import { useDispatch, useSelector } from "react-redux"
 import Loader from "../components/Loader.js"
-import { useLoginMutation } from "./usersApiSlice.js"
-import { setCredentials } from "./authSlice.js"
+import { useRegisterMutation } from "../slices/usersApiSlice.js"
+import { setCredentials } from "../slices/authSlice.js"
 import { toast } from 'react-toastify'
 
-const LoginPage = () => {
+const RegisterPage = () => {
+    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setpassword] = useState('')
+    const [confirmPassword, setconfirmPassword] = useState('')
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const [login, { isLoading }] = useLoginMutation()
+    const [login, { isLoading }] = useRegisterMutation()
     const { userInfo } = useSelector((store) => store.auth)
 
     useEffect(() => {
@@ -39,9 +42,14 @@ const LoginPage = () => {
     }
     return (
         <FormContainer>
-            <h2>Sign In</h2>
+            <h2>Sign Up</h2>
 
             <Form onSubmit={submitHandler}>
+                <Form.Group controlId="name" className="my-3">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Name" value={name} onChange={(e) => setName(e.target.value)} />
+                </Form.Group>
+
                 <Form.Group controlId="email" className="my-3">
                     <Form.Label>Email Address</Form.Label>
                     <Form.Control type="email" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -52,18 +60,23 @@ const LoginPage = () => {
                     <Form.Control type="email" placeholder="Enter Password" value={password} onChange={(e) => setpassword(e.target.value)} />
                 </Form.Group>
 
+                <Form.Group controlId="confirmPassword" className="my-3">
+                    <Form.Label>confirm Password</Form.Label>
+                    <Form.Control type="email" placeholder="confirm Password" value={confirmPassword} onChange={(e) => setconfirmPassword(e.target.value)} />
+                </Form.Group>
+
                 <Button type="submit" variant="primary" className="mt-2" disabled={isLoading}>
-                    Sign In
+                    Sign Up
                 </Button>
                 {isLoading && <Loader />}
             </Form>
             <Row className="py-3">
                 <Col>
-                    New Customer? <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link>
+                    Existing Customer? <Link to='/login'>Login</Link>
                 </Col>
             </Row>
 
         </FormContainer>
     )
 }
-export default LoginPage
+export default RegisterPage

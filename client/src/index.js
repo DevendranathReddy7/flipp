@@ -9,8 +9,8 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import { Provider } from 'react-redux';
 import store from './store';
 import CartPage from './pages/CartPage';
-import LoginPage from './slices/LoginPage';
-import RegisterPage from './slices/RegisterPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
