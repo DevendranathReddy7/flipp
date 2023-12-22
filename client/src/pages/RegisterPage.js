@@ -16,7 +16,7 @@ const RegisterPage = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const [login, { isLoading }] = useRegisterMutation()
+    const [register, { isLoading }] = useRegisterMutation()
     const { userInfo } = useSelector((store) => store.auth)
 
     useEffect(() => {
@@ -31,13 +31,19 @@ const RegisterPage = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault()
-        try {
-            const res = await login({ email, password }).unwrap()
-            dispatch(setCredentials({ ...res }))
-            navigate(redirect)
-        } catch (error) {
-            toast.error(error?.data?.message || error?.message)
+        if (password !== confirmPassword) {
+            toast.error('Password not matched')
+            return
+        } else {
+            try {
+                const res = await register({ email, password }).unwrap()
+                dispatch(setCredentials({ ...res }))
+                navigate(redirect)
+            } catch (error) {
+                toast.error(error?.data?.message || error?.message)
+            }
         }
+
 
     }
     return (
@@ -72,7 +78,7 @@ const RegisterPage = () => {
             </Form>
             <Row className="py-3">
                 <Col>
-                    Existing Customer? <Link to='/login'>Login</Link>
+                    Existing Customer? <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link>
                 </Col>
             </Row>
 
