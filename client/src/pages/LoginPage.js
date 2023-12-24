@@ -16,15 +16,17 @@ const LoginPage = () => {
     const [login, { isLoading }] = useLoginMutation()
     const { userInfo } = useSelector((store) => store.auth)
 
+
+
+    const { search } = useLocation()
+    const sp = new URLSearchParams(search)
+    const redirect = sp.get('redirect') || '/'
+
     useEffect(() => {
         if (userInfo) {
             navigate(redirect)
         }
     }, [userInfo, redirect, navigate])
-
-    const { search } = useLocation()
-    const sp = new URLSearchParams(search)
-    const redirect = sp.get('redirect') || '/'
 
     const submitHandler = async (e) => {
         e.preventDefault()
@@ -49,7 +51,7 @@ const LoginPage = () => {
 
                 <Form.Group controlId="password" className="my-3">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="email" placeholder="Enter Password" value={password} onChange={(e) => setpassword(e.target.value)} />
+                    <Form.Control type="password" placeholder="Enter Password" value={password} onChange={(e) => setpassword(e.target.value)} />
                 </Form.Group>
 
                 <Button type="submit" variant="primary" className="mt-2" disabled={isLoading}>

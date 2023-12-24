@@ -1,4 +1,3 @@
-import { query } from "express";
 import { USERS_URL } from "../constants";
 import { apiSlice } from "./apiSlice";
 
@@ -7,7 +6,7 @@ export const userAPiSlice = apiSlice.injectEndpoints({
 
         login: builder.mutation({
             query: (data) => ({
-                url: `${USERS_URL}/auth`,
+                url: `${USERS_URL}/login`,
                 method: 'POST',
                 body: data
             })
