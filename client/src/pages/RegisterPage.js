@@ -36,7 +36,7 @@ const RegisterPage = () => {
             return
         } else {
             try {
-                const res = await register({ email, password }).unwrap()
+                const res = await register({ name, email, password }).unwrap()
                 dispatch(setCredentials({ ...res }))
                 navigate(redirect)
             } catch (error) {
@@ -68,7 +68,7 @@ const RegisterPage = () => {
 
                 <Form.Group controlId="confirmPassword" className="my-3">
                     <Form.Label>confirm Password</Form.Label>
-                    <Form.Control type="email" placeholder="confirm Password" value={confirmPassword} onChange={(e) => setconfirmPassword(e.target.value)} />
+                    <Form.Control type="password" placeholder="confirm Password" value={confirmPassword} onChange={(e) => setconfirmPassword(e.target.value)} />
                 </Form.Group>
 
                 <Button type="submit" variant="primary" className="mt-2" disabled={isLoading}>
